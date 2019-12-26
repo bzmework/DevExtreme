@@ -1,0 +1,3 @@
+DevExtreme provides a utility that integrates its widgets with [ExcelJS](https://github.com/exceljs/exceljs#exceljs) (an Excel document customization library). In this demo, this utility is applied in the **onExporting** event handler and used to add a custom header and footer to an Excel document exported from the **DataGrid** widget.
+
+**NOTE**: This functionality is at the Community Technology Preview (CTP) development stage: it is available for testing, but its concept, design, and behavior can be reconsidered and changed without notice.

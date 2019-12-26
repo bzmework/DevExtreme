@@ -1,0 +1,174 @@
+﻿@(Html.DevExtreme().FileManager()
+    .ID("file_manager")
+    .FileProvider(new JS("fileSystem"))
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Remove(true)
+        .Rename(true))
+    .Height(450)
+    .CustomizeThumbnail("customizeIcon")
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add()
+                .Name(FileManagerToolbarItem.ShowNavPane)
+                .Visible(true);
+
+            items.Add().Name(FileManagerToolbarItem.Separator);
+            items.Add().Name(FileManagerToolbarItem.Create);
+
+            items.Add()
+                .Widget(widget => widget.Menu()
+                    .Items(menuItems => {
+                        menuItems.Add()
+                            .Text("Create new file")
+                            .Items(subItems => {
+                                subItems.Add()
+                                    .Text("Plain text document")
+                                    .Option("extension", ".txt")
+                                    .Option("onClick", new JS("onItemClick"));
+
+                                subItems.Add()
+                                    .Text("Word document")
+                                    .Option("extension", ".doc")
+                                    .Option("onClick", new JS("onItemClick"));
+
+                                subItems.Add()
+                                    .Text("Excel spreadsheet")
+                                    .Option("extension", ".xls")
+                                    .Option("onClick", new JS("onItemClick"));
+                            });
+                    })
+                )
+                .Location(ToolbarItemLocation.Before);
+
+            items.Add().Name(FileManagerToolbarItem.Refresh);
+
+            items.Add()
+                .Name(FileManagerToolbarItem.Separator)
+                .Location(ToolbarItemLocation.After);
+
+            items.Add().Name(FileManagerToolbarItem.ViewSwitcher);
+        });
+
+        toolbar.FileSelectionItems(items => {
+            items.Add().Name(FileManagerToolbarItem.Move);
+            items.Add().Name(FileManagerToolbarItem.Copy);
+            items.Add().Name(FileManagerToolbarItem.Rename);
+
+            items.Add().Widget(widget => widget.Button()
+                    .Text("Share")
+                    .Icon("share")
+                    .OnClick("shareItem"))
+                .Location(ToolbarItemLocation.Before);
+
+            items.Add().Widget(widget => widget.Button()
+                    .Text("Unshare")
+                    .Icon("revert")
+                    .OnClick("unshareItem"))
+                .Location(ToolbarItemLocation.Before);
+
+            items.Add().Name(FileManagerToolbarItem.Separator);
+            items.Add().Name(FileManagerToolbarItem.Delete);
+            items.Add().Name(FileManagerToolbarItem.Refresh);
+            items.Add().Name(FileManagerToolbarItem.Clear);
+        });
+    })
+    .ContextMenu(contextMenu => {
+        contextMenu.Items(items => {
+            items.Add().Name(FileManagerContextMenuItem.Create);
+
+            items.Add()
+                .Text("Create new file")
+                .Items(subItems => {
+                    subItems.Add()
+                        .Text("Plain text document")
+                        .Option("extension", ".txt")
+                        .Option("onClick", new JS("onItemClick"));
+
+                    subItems.Add()
+                        .Text("Word document")
+                        .Option("extension", ".doc")
+                        .Option("onClick", new JS("onItemClick"));
+
+                    subItems.Add()
+                        .Text("Excel spreadsheet")
+                        .Option("extension", ".xls")
+                        .Option("onClick", new JS("onItemClick"));
+                });
+
+            items.Add()
+                .Text("Share")
+                .Icon("share")
+                .BeginGroup(true)
+                .Option("onClick", new JS("shareItem"));
+
+            items.Add()
+                .Text("Unshare")
+                .Icon("revert")
+                .Option("onClick", new JS("unshareItem"));
+
+            items.Add()
+                .Name(FileManagerContextMenuItem.Rename)
+                .BeginGroup(true);
+
+            items.Add().Name(FileManagerContextMenuItem.Move);
+            items.Add().Name(FileManagerContextMenuItem.Copy);
+            items.Add().Name(FileManagerContextMenuItem.Delete);
+            items.Add().Name(FileManagerContextMenuItem.Refresh);
+        });
+    })
+)
+
+<script type="text/javascript">
+    function customizeIcon(fileManagerItem) {
+        if(fileManagerItem.dataItem && fileManagerItem.dataItem.shared) {
+            return fileManagerItem.isDirectory ? "group" : "card";
+        }
+    }
+
+    function onItemClick(args) {
+        var fileManager = getFileManager();
+        var currentDirectory = fileManager.getCurrentDirectory();
+        var selectedItems = fileManager.getSelectedItems();
+
+        var newItem = {
+            __KEY__: Date.now(),
+            name: "New file" + args.itemData.extension,
+            isDirectory: false,
+            size: 0
+        };
+        if(selectedItems.length === 1 && selectedItems[0].isDirectory && selectedItems[0].name !== "..") {
+            currentDirectory = selectedItems[0];
+        }
+        if(currentDirectory.dataItem) {
+            currentDirectory.dataItem.items.push(newItem);
+        } else {
+            fileSystem.push(newItem);
+        }
+        fileManager.refresh();
+    }
+
+    function shareItem() {
+        changeSharedState(true);
+    }
+
+    function unshareItem() {
+        changeSharedState(false);
+    }
+
+    function changeSharedState(isShared) {
+        var fileManager = getFileManager();
+        fileManager.getSelectedItems().forEach(function(item) {
+            item.dataItem.shared = isShared;
+        });
+        fileManager.refresh();
+    }
+
+    function getFileManager() {
+        return $("#file_manager").dxFileManager("instance");
+    }
+</script>
+
+<script src="~/data/fileSystem.js"></script>

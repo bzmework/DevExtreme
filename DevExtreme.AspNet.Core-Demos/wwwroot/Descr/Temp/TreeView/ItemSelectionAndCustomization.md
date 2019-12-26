@@ -1,0 +1,1 @@
+The **TreeView** widget supports multi-selection. In&nbsp;this demo, the **showCheckBoxesMode** option is&nbsp;set to _&laquo;normal&raquo;_ allowing multiple items to&nbsp;be&nbsp;marked as&nbsp;selected. In&nbsp;addition, a&nbsp;custom item template is&nbsp;utilized to&nbsp;display price per item in&nbsp;brackets.

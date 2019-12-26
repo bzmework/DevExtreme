@@ -1,0 +1,1 @@
+This example demonstrates a&nbsp;**DataGrid** widget that supports focused rows. The&nbsp;**focusedRowKey** option specifies the&nbsp;focused row. The **onFocusedRowChanged** callback function can be&nbsp;used to&nbsp;display additional information below the&nbsp;**DataGrid** when the&nbsp;focused row changes. The **focusedRowEnabled** option enables row focusing.

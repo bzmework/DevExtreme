@@ -1,0 +1,153 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.AppointmentContextMenuItemsViewModel
+
+@using DevExtreme.NETCore.Demos.Models;
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .RecurrenceEditMode(SchedulerRecurrenceEditMode.Series)
+    .StartDayHour(9)
+    .FirstDayOfWeek(FirstDayOfWeek.Monday)
+    .Groups(null)
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("RoomId")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .DisplayExpr("Text")
+            .Label("Room")
+            .DataSource(Model.Resources);
+    })
+    .OnCellContextMenu("onCellContextMenu")
+    .OnAppointmentContextMenu("onAppointmentContextMenu")
+    .Height(600)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .RecurrenceExceptionExpr("RecurrenceException")
+)
+
+@(Html.DevExtreme().ContextMenu()
+    .ID("context-menu")
+    .Width(200)
+    .DisplayExpr("Text")
+    .Target(".dx-scheduler-date-table-cell")
+    .DataSource(new[] {
+        new AppointmentContextMenuItem {
+            Name = "NewAppointment",
+            Text = "New Appointment"
+        },
+        new AppointmentContextMenuItem {
+            Name = "NewRecurringAppointment",
+            Text = "New Recurring Appointment"
+        },
+        new AppointmentContextMenuItem {
+            Name = "Group/Ungroup",
+            Text = "Group by Room/Ungroup",
+            BeginGroup = true
+        },
+        new AppointmentContextMenuItem {
+            Name = "GoToToday",
+            Text = "Go to Today"
+        }
+    })
+)
+
+@(Html.DevExtreme().ContextMenu()
+    .ID("appointment-context-menu")
+    .Width(200)
+    .Target(".dx-scheduler-appointment")
+    .DataSource(Model.ContextMenuItems)
+    .ItemTemplate(new JS(@"
+        function(itemData) {
+            var $template = $('<div></div>');
+
+            if(itemData.Color) {
+                $template.append(""<div class='appointment-badge' style='background-color:"" + itemData.Color + "";'></div>"");
+            }
+
+            $template.append(itemData.Text);
+
+            if(itemData.Text === ""New Appointment until the end of the week"") {
+                $template.append('<hr />');
+            }
+
+            return $template;
+        }")
+    )
+)
+<script>
+    function onAppointmentContextMenu(e) {
+        var scheduler = e.component,
+            appointmentData = e.appointmentData,
+            targetedAppointmentData = e.targetedAppointmentData;
+
+        $("#appointment-context-menu").dxContextMenu("instance").option("onItemClick", function (e) {
+            switch (e.itemData.Name) {
+                case "Open":
+                    scheduler.showAppointmentPopup(appointmentData);
+                    break;
+                case "Delete":
+                    scheduler.deleteAppointment(appointmentData);
+                    break;
+                case "RepeatWeekly":
+                    scheduler.updateAppointment(appointmentData, $.extend(appointmentData, {
+                        StartDate: targetedAppointmentData.StartDate,
+                        RecurrenceRule: "FREQ=WEEKLY"
+                    }));
+                    break;
+                default:
+                    if (e.itemData.Color) {
+                        scheduler.updateAppointment(appointmentData, $.extend(appointmentData, {
+                            RoomId: [e.itemData.Id]
+                        }));
+                    }
+            }
+        });
+    }
+
+    function onCellContextMenu(e) {
+        var scheduler = e.component,
+            cellData = e.cellData;
+
+        $("#context-menu").dxContextMenu("instance").option("onItemClick", function (e) {
+            switch (e.itemData.Name) {
+                case "NewAppointment":
+                    scheduler.showAppointmentPopup({
+                        StartDate: cellData.startDate
+                    }, true);
+                    break;
+                case "NewRecurringAppointment":
+                    scheduler.showAppointmentPopup({
+                        StartDate: cellData.startDate,
+                        RecurrenceRule: "FREQ=DAILY"
+                    }, true);
+                    break;
+                case "Group/Ungroup":
+                    if (scheduler.option("groups")) {
+                        scheduler.option({
+                            "crossScrollingEnabled": false,
+                            "groups": undefined
+                        });
+                    } else {
+                        scheduler.option({
+                            "crossScrollingEnabled": true,
+                            "groups": ["RoomId"]
+                        });
+                        scheduler.repaint();
+                    }
+                    break;
+                case "GoToToday":
+                    scheduler.option("currentDate", new Date());
+                    break;
+            }
+        });
+    }
+</script>

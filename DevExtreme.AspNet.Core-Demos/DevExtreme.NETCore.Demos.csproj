@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <DefineConstants>$(DefineConstants);DB_SQLITE</DefineConstants>
+    <Configurations>Debug;Release;Test</Configurations>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
+    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotnetPublishFiles Include="Northwind.sqlite">
+      <DestinationRelativePath>%(RelativeDir)%(Filename)%(Extension)</DestinationRelativePath>
+    </DotnetPublishFiles>
+    <DotnetPublishFiles Include="FileManagement.db">
+      <DestinationRelativePath>%(RelativeDir)%(Filename)%(Extension)</DestinationRelativePath>
+    </DotnetPublishFiles>
+    <DotnetPublishFiles Include="**/*.cs;**/*.cshtml;wwwroot/css/DemosStyles/**/*.css">
+      <DestinationRelativePath>Sources/%(RelativeDir)%(Filename)%(Extension).txt</DestinationRelativePath>
+    </DotnetPublishFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExtreme.AspNet.Core">
+      <HintPath>..\DevExtreme.AspNet.Core\bin\Debug\netstandard2.0\DevExtreme.AspNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Data">
+      <HintPath>..\DevExtreme.AspNet.Core\bin\Debug\netstandard2.0\DevExtreme.AspNet.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Northwind.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

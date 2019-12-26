@@ -1,0 +1,1 @@
+This demo illustrates the ability of&nbsp;the **Scheduler** to&nbsp;customize the appearance of&nbsp;its cells. For this purpose the **resourceCellTemplate** and **dataCellTemplate** options are utilized.

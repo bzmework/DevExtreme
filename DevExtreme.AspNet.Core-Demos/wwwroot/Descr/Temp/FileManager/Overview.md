@@ -1,0 +1,8 @@
+The DevExtreme HTML5 JavaScript File Manager widget allows you to display and manage files and directories for different file systems. The **File Manager** uses file providers to access file systems.
+Use the [fileProvider](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/#fileProvider) option to configure the widget's file provider. The ["File System Types"](/Demo/FileManager/BindingToFileSystem) demo group illustrates how to use the FileManager widget with different file providers.
+
+The widget's default security settings provide read-only access to files and directories. Use the [permissions](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/permissions) option to deny or allow a user to copy, create, move, remove, rename, upload, and download files and directories. You can also specify upload file restrictions: allowed file extensions ([allowedFileExtensions](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/#allowedFileExtensions)) and maximum file size ([maxFileSize](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/upload/#maxFileSize)).
+
+Use the widget's [itemView](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/itemView/) option or the view switcher on the toolbar to display file system items as a detailed list or customizable thumbnails.
+
+*This demo contains commented out code lines that enable file modification operations. You can uncomment them and configure if necessary.*

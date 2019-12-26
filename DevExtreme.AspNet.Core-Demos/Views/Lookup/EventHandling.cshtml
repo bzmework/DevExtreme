@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        @(Html.DevExtreme().Lookup()
+            .DataSource(Model)
+            .DisplayExpr(new JS("lookup_displayExpr"))
+            .Placeholder("Select employee")
+            .ShowPopupTitle(false)
+            .OnValueChanged("lookup_valueChanged")
+        )
+    </div>
+</div>
+<div class="selected" display="none">
+    <img id="selected-employee-img" src="" alt="">
+    <span id="selected-employee-notes"></span>
+</div>
+
+<script>
+    function lookup_valueChanged(e) {
+        $(".selected").show();
+        $("#selected-employee-img").attr("src", e.value.Picture);
+        $("#selected-employee-notes").text(e.value.Notes);
+    }
+
+    function lookup_displayExpr(item) {
+        if(!item) {
+            return "";
+        }
+
+        return item.FirstName + " " + item.LastName;
+    }
+</script>

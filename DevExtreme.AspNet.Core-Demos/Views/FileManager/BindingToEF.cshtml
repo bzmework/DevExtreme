@@ -1,0 +1,34 @@
+﻿@(Html.DevExtreme().FileManager()
+    .CurrentPath("Documents/Reports")
+    .FileProvider(f => f.Remote()
+        .Url(Url.RouteUrl("FileManagerDBProviderApi")))
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Remove(true)
+        .Rename(true))
+    .CustomizeDetailColumns(@<text>
+        function(columns) {
+            var fileSizeColumn = columns.filter(function(c) { return c.dataField === "fileSize"; })[0];
+            columns.splice(columns.indexOf(fileSizeColumn), 1);
+
+            var modifiedColumn = columns.filter(function(c) { return c.dataField === "dateModified"; })[0];
+            modifiedColumn.caption = "Modified";
+
+            columns.push({
+                caption: "Created",
+                dataField: "created",
+                dataType: "date"
+            });
+
+            columns.push({
+                visibleIndex: 2,
+                caption: "Modified By",
+                dataField: "modifiedBy"
+            });
+            return columns;
+        }
+    </text>)
+    .AllowedFileExtensions(new string[0])
+    .Height(545))

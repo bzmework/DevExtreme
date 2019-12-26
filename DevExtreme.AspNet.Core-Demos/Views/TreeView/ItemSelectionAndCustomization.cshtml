@@ -1,0 +1,84 @@
+﻿<div class="form">
+    <h4>Store: Super Mart of the West</h4>
+    @(Html.DevExtreme().TreeView()
+        .DataSource(d => d.Mvc().LoadAction("SuperMartOfTheWest"))
+        .DisplayExpr("Text")
+        .ItemsExpr("Items")
+        .ExpandedExpr("Expanded")
+        .Width(320)
+        .ShowCheckBoxesMode(TreeViewCheckBoxMode.Normal)
+        .OnItemSelectionChanged("treeViewItem_selectionChanged")
+        .ItemTemplate(@<text>
+            <div>
+                <%- Text %>
+                <% if(Price) { %>
+                ($<%- Price %>)
+                <% } %>
+            </div>
+        </text>)
+    )
+    <div class="selected-data">
+        Selected Products
+        @(Html.DevExtreme().List()
+            .ID("checked-items")
+            .Width(400)
+            .ItemTemplate(@<text>
+                <div>
+                <%- itemData.Text %> (<%- Category %>) - $<%- itemData.Price %>
+                </div>
+            </text>)
+        )
+        <div id="checked-items"></div>
+    </div>
+</div>
+
+<script>
+
+    function getListInstance() {
+        return $("#checked-items").dxList("instance");
+    }
+
+    function treeViewItem_selectionChanged(e) {
+        var item = e.node,
+            checkedItems = [];
+
+        if(isProduct(item)) {
+            checkedItems = processProduct($.extend({
+                Category: item.parent.text
+            }, item));
+        } else {
+            $.each(item.items, function (index, product) {
+                checkedItems = processProduct($.extend({
+                    Category: item.text
+                }, product));
+            });
+
+        }
+
+        getListInstance().option("items", checkedItems);
+    }
+
+    function isProduct(data) {
+        return !data.items.length;
+    }
+
+    function processProduct(product) {
+        var itemIndex = -1,
+            checkedItems = getListInstance().option("items");
+
+        $.each(checkedItems, function (index, item) {
+            if(item.key === product.key) {
+                itemIndex = index;
+                return false;
+            }
+        });
+
+        if(product.selected && itemIndex === -1) {
+            checkedItems.push(product);
+        } else if(!product.selected) {
+            checkedItems.splice(itemIndex, 1);
+        }
+
+        return checkedItems;
+    }
+</script>

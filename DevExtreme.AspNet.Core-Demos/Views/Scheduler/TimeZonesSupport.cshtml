@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Event>
+@{
+    var locations = new[] {
+        new { Value = "America/Los_Angeles", Text = "Los Angeles", Color = "#1e90ff" },
+        new { Value = "America/New_York", Text = "New York", Color = "#56ca85" },
+        new { Value = "Europe/Berlin", Text = "Berlin", Color = "#ff9747" }
+    };
+}
+
+@(Html.DevExtreme().Scheduler()
+    .DataSource(Model)
+    .DataSourceOptions(o => o.Filter("['StartDateTimeZone', 'America/Los_Angeles']"))
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .TextExpr("Text")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .StartDateTimeZoneExpr("StartDateTimeZone")
+    .EndDateTimeZoneExpr("EndDateTimeZone")
+    .Views(new[] { SchedulerViewType.WorkWeek })
+    .CurrentView(SchedulerViewType.WorkWeek)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .StartDayHour(8)
+    .Height(600)
+    .TimeZone("America/Los_Angeles")
+    .Resources(res => {
+        res.Add()
+            .DataSource(locations)
+            .FieldExpr("StartDateTimeZone")
+            .ColorExpr("Color")
+            .DisplayExpr("Text")
+            .ValueExpr("Value");
+    })
+    .OnAppointmentFormOpening(@<text>
+        function(e) {
+            e.form.itemOption("StartDateTimeZone", { visible: true });
+            e.form.itemOption("EndDateTimeZone", { visible: true });
+        }
+    </text>)
+    .ElementAttr("class", "scheduler")
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Office Location</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(locations)
+            .Width(200)
+            .Value("America/Los_Angeles")
+            .DisplayExpr("Text")
+            .ValueExpr("Value")
+            .OnValueChanged(@<text>
+                function(e) {
+                    var scheduler = $(".scheduler").dxScheduler("instance"),
+                        dataSource = scheduler.getDataSource();
+
+                    dataSource.filter(["StartDateTimeZone", e.value]);
+                    scheduler.option("timeZone", e.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

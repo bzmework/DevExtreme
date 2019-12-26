@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+  <PropertyGroup>
+    <AssemblyName>DevExtreme.AspNet.Data</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>full</DebugType>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\DevExtreme.AspNet.Data.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Company />
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <Compile Remove="DynamicBindingHelper.cs" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Include="DynamicBindingHelper.cs" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    <None Update="Types\AnonType.Generated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AnonType.Generated.cs</LastGenOutput>
+    </None>
+    <Compile Update="Types\AnonType.Generated.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnonType.Generated.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
+</Project>

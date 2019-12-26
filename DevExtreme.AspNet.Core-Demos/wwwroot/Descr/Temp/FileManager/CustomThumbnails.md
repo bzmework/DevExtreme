@@ -1,0 +1,1 @@
+The FileManager widget allows you to provide custom thumbnails. Handle the **customizeThumbnail** event to specify how the widget presents files in folders.

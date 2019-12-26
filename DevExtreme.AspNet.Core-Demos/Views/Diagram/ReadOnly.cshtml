@@ -1,0 +1,22 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .ReadOnly(true)
+    .PropertiesPanel(pp => pp
+        .Enabled(false)
+    )
+    .Toolbox(t => t
+        .Visible(false)
+    )
+)
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "@Url.Content("~/SampleData/diagram-structure.json")",
+            dataType: "text",
+            success: function(data) {
+                $("#diagram").dxDiagram("instance").import(data);
+            }
+        });
+    });
+</script>

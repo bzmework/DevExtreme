@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.GalleryItem>
+
+@(Html.DevExtreme().Gallery()
+    .DataSource(Model)
+    .Height(440)
+    .Width("100%")
+    .Loop(true)
+    .ShowIndicator(false)
+    .ItemTemplate(@<text>
+        <div>
+            <img src="<%- Image %>" />
+            <div class="item-price"><%- Globalize.formatCurrency(Price, 'USD', { maximumFractionDigits: 0 }) %></div>
+            <div class="item-address"><%- Address %>, <%- City %>, <%- State %></div>
+        </div>
+    </text>)
+)

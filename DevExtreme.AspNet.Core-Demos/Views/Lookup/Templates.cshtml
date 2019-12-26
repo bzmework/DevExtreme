@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>
+
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Custom Field Template</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Lookup()
+            .ElementAttr("class", "field-customization")
+            .DataSource(Model)
+            .DisplayExpr(new JS("lookup_displayExpr"))
+            .ValueExpr("ID")
+            .Value(Model.First().ID)
+            .Title("Select employee")
+            .FieldTemplate(@<text>
+            <div class="custom-field">
+                <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+            </div>
+            </text>)
+        )
+    </div>
+</div>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Custom Item Template</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Lookup()
+            .DataSource(Model)
+            .SearchExpr(new[] { "FirstName", "LastName", "Prefix" })
+            .ValueExpr("ID")
+            .DisplayExpr(new JS("lookup_displayExpr"))
+            .Title("Select employee")
+            .Placeholder("Select employee")
+            .ItemTemplate(@<text>
+            <div class="custom-item">
+                <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+            </div>
+            </text>)
+        )
+    </div>
+</div>
+
+<script>
+    function lookup_displayExpr(item) {
+        if(!item) {
+            return "";
+        }
+
+        return item.FirstName + " " + item.LastName;
+    }
+</script>

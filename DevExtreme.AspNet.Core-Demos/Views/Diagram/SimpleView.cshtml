@@ -1,0 +1,20 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .SimpleView(true)
+    .PropertiesPanel(pp => pp
+        .Enabled(false)
+    )
+    .Toolbox(t => t
+        .Visible(false)
+    )
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model)
+        )
+        .KeyExpr("ID")
+        .TextExpr("Title")
+        .ParentKeyExpr("HeadID")
+    )
+)

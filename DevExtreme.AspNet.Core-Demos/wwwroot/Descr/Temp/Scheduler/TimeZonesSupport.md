@@ -1,0 +1,1 @@
+The **Scheduler** widget can show appointments in&nbsp;different time zones. The current time zone is&nbsp;specified using the **timeZome** option is&nbsp;utilized. In&nbsp;this demo, you can change the time zone of&nbsp;an&nbsp;appointment in&nbsp;the appointment details form. To&nbsp;make the time zone selectors visible, the **onAppointmentFormOpening** is&nbsp;utilized.

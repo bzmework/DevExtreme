@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevExtreme.AspNet.Core", "DevExtreme.AspNet.Core.csproj", "{9CA6D1E6-74E7-4A8F-881E-61A93825B876}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevExtreme.AspNet.Data", "..\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data.csproj", "{7B0CA1E9-AF49-4721-ACFE-BC4712370635}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CA6D1E6-74E7-4A8F-881E-61A93825B876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA6D1E6-74E7-4A8F-881E-61A93825B876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA6D1E6-74E7-4A8F-881E-61A93825B876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA6D1E6-74E7-4A8F-881E-61A93825B876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0CA1E9-AF49-4721-ACFE-BC4712370635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0CA1E9-AF49-4721-ACFE-BC4712370635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0CA1E9-AF49-4721-ACFE-BC4712370635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0CA1E9-AF49-4721-ACFE-BC4712370635}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {458D8EF8-46B5-44FF-A824-3E64FB0B570F}
+	EndGlobalSection
+EndGlobal

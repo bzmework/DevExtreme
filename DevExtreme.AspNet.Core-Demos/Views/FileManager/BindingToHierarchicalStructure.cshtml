@@ -1,0 +1,12 @@
+﻿@(Html.DevExtreme().FileManager()
+    .FileProvider(new JS("fileSystem"))
+    .CurrentPath("Documents")
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Remove(true)
+        .Rename(true))
+    .Height(450))
+
+<script src="~/data/fileSystem.js"></script>

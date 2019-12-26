@@ -1,0 +1,9 @@
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\bin\Release\netstandard2.0\DevExtreme.AspNet.Data.deps.json
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\bin\Release\netstandard2.0\DevExtreme.AspNet.Data.dll
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\bin\Release\netstandard2.0\DevExtreme.AspNet.Data.pdb
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\bin\Release\netstandard2.0\DevExtreme.AspNet.Data.xml
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\obj\Release\netstandard2.0\DevExtreme.AspNet.Data.AssemblyInfoInputs.cache
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\obj\Release\netstandard2.0\DevExtreme.AspNet.Data.AssemblyInfo.cs
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\obj\Release\netstandard2.0\DevExtreme.AspNet.Data.dll
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\obj\Release\netstandard2.0\DevExtreme.AspNet.Data.pdb
+I:\我的项目\组件\DevExtreme\DevExtreme.AspNet.Data\DevExtreme.AspNet.Data-2.5.1\net\DevExtreme.AspNet.Data\obj\Release\netstandard2.0\DevExtreme.AspNet.Data.csprojAssemblyReference.cache

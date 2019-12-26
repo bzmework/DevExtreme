@@ -1,0 +1,20 @@
+﻿@(Html.DevExtreme().List()
+    .ItemTemplate(@<text>
+        <div><%- ProductName %></div>
+        <div><b><%- Globalize.formatCurrency(UnitPrice, "USD") %></b></div>
+    </text>)
+    .DataSource(d => d.Mvc().Controller("ListData").LoadAction("Get"))
+    .DataSourceOptions(d => d
+        .PageSize(1)
+        .Sort("ProductName")
+        .Group("Category.CategoryName")
+        .Filter("[ 'UnitPrice', '>', '15' ]")
+    )
+    .Grouped(true)
+    .CollapsibleGroups(true)
+    .ItemDeleteMode(ListItemDeleteMode.SlideItem)
+    .SelectionMode(ListSelectionMode.Multiple)
+    .ShowSelectionControls(true)
+    .PageLoadMode(ListPageLoadMode.ScrollBottom)
+    .Height(600)
+)

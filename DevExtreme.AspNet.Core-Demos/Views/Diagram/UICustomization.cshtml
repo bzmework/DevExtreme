@@ -1,0 +1,47 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .ContextMenu(cm => cm
+        .Enabled(true)
+        .Commands(new[] {
+            DiagramContextMenuCommand.BringToFront,
+            DiagramContextMenuCommand.SendToBack,
+            DiagramContextMenuCommand.Lock,
+            DiagramContextMenuCommand.Unlock
+        })
+    )
+    .PropertiesPanel(pp => pp
+        .Enabled(true)
+        .Collapsible(false)
+        .Groups(g => {
+            g.Add().Commands(new[] { DiagramPropertiesPanelCommand.Units });
+            g.Add().Commands(new[] { DiagramPropertiesPanelCommand.PageSize, DiagramPropertiesPanelCommand.PageOrientation, DiagramPropertiesPanelCommand.PageColor });
+        })
+    )
+    .Toolbar(tb => tb
+        .Visible(true)
+        .Commands(new[] { DiagramToolbarCommand.Undo, DiagramToolbarCommand.Redo, DiagramToolbarCommand.Separator,
+            DiagramToolbarCommand.FontName, DiagramToolbarCommand.FontSize, DiagramToolbarCommand.Separator,
+            DiagramToolbarCommand.Bold, DiagramToolbarCommand.Italic, DiagramToolbarCommand.Underline, DiagramToolbarCommand.Separator,
+            DiagramToolbarCommand.FontColor, DiagramToolbarCommand.LineColor, DiagramToolbarCommand.FillColor, DiagramToolbarCommand.Separator
+        })
+    )
+    .Toolbox(tb => tb
+        .Visible(true)
+        .Groups(g => {
+            g.Add().Category(DiagramShapeCategory.General).Title("General");
+            g.Add().Category(DiagramShapeCategory.Flowchart).Title("Flowchart").Expanded(true);
+        })
+    )
+)
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "@Url.Content("~/SampleData/diagram-flow.json")",
+            dataType: "text",
+            success: function(data) {
+                $("#diagram").dxDiagram("instance").import(data);
+            }
+        });
+    });
+</script>

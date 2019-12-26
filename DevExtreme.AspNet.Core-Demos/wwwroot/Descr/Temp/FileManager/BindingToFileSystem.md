@@ -1,0 +1,8 @@
+The **File Manager** widget can work with a file system located on the server. To connect the widget with the file system items, assign the [Remote File Provider](/Documentation/ApiReference/UI_Widgets/dxFileManager/File_Providers/Remote/) to the fileProvider option. Pass the [endpoint url](/Documentation/ApiReference/UI_Widgets/dxFileManager/File_Providers/Remote/Configuration/#endpointUrl) to the remote file provider object to specify the Url at which the widget can access the file system items.
+
+Configure the built-in server-side helper methods to process the FileManager widget's AJAX requests on the ASP.NET MVC and ASP.NET Core backend.
+1. Create an instance of the [FileSystemConfiguration](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.FileManagement.FileSystemConfiguration) class to create a file provider and configure its interaction with file system items.
+2. Use the [FileSystemProvider](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.FileManagement.FileSystemConfiguration.FileSystemProvider) property to specify a file system provider. For a physical file system, configure a file provider of the [DefaultFileProvider](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.FileManagement.DefaultFileProvider) type.
+3. Use the [FileSystemCommandProcessor](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.FileManagement.FileSystemCommandProcessor) class to process commands and request parameters that the widget passes to the file system.
+
+This demo contains commented out code lines that enable file modification operations. You can uncomment them and configure if necessary.

@@ -1,0 +1,45 @@
+[
+
+  {
+    "outputFileName": "wwwroot/bundle.min.css",
+    "inputFiles": [
+      "wwwroot/css/dx-diagram.min.css",
+      "wwwroot/css/dx-gantt.min.css",
+      "wwwroot/css/dx.common.css",
+      "wwwroot/DemoShell/hljs/highlightjs.gh.css"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/bundle.min.js",
+    "inputFiles": [
+      "wwwroot/js/dx-diagram.min.js",
+      "wwwroot/js/dx-gantt.min.js",
+
+      "wwwroot/js/jquery.min.js",
+
+      "wwwroot/js/cldr.min.js",
+      "wwwroot/js/cldr/event.min.js",
+      "wwwroot/js/cldr/supplemental.min.js",
+      "wwwroot/js/cldr/unresolved.min.js",
+
+      "wwwroot/js/globalize.min.js",
+      "wwwroot/js/globalize/number.min.js",
+      "wwwroot/js/globalize/currency.min.js",
+      "wwwroot/js/globalize/date.min.js",
+      "wwwroot/js/globalize/message.min.js",
+
+      "wwwroot/js/jszip.min.js",
+
+      "wwwroot/js/dx.all.js",
+      "wwwroot/js/dx.aspnet.mvc.js",
+      "wwwroot/js/dx.aspnet.data.js",
+
+      "wwwroot/js/vectormap-data/world.js",
+      "wwwroot/js/vectormap-data/usa.js",
+
+      "wwwroot/DemoShell/hljs/highlight.pack.js"
+    ]
+  }
+
+]

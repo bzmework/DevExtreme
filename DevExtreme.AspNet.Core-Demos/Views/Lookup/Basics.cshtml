@@ -1,0 +1,29 @@
+﻿@model IEnumerable<string>
+
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Simple lookup</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Lookup()
+            .DataSource(Model)
+            .Value(Model.First())
+            .ShowPopupTitle(false)
+        )
+    </div>
+</div>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Grouped lookup</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Lookup()
+            .DataSource(d => d.Mvc()
+                .Controller("EmployeesTasks")
+                .LoadAction("Get")
+                .Key("ID")
+            )
+            .DataSourceOptions(o => o.Group("Assigned"))
+            .Grouped(true)
+            .CloseOnOutsideClick(true)
+            .ShowPopupTitle(false)
+            .DisplayExpr("Subject")
+        )
+    </div>
+</div>

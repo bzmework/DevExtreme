@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevExtreme.AspNet.Data</name>
+    </assembly>
+    <members>
+        <member name="T:DevExtreme.AspNet.Data.Aggregation.Aggregator`1">
+            <summary>
+            Represents a data aggregator.
+            表示数据聚合器。
+            </summary>
+            <typeparam name="T">
+            The type of the data items to be aggregated.
+            要聚合的数据项的类型。
+            </typeparam>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.Aggregation.Aggregator`1.Accessor">
+            <summary>
+            Allows reading data item properties.
+            允许读取数据项属性。
+            </summary>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Aggregation.Aggregator`1.#ctor(DevExtreme.AspNet.Data.Helpers.IAccessor{`0})">
+            <summary>
+            Initializes a new Aggregator class instance with an object that allows reading data item properties.
+            使用允许读取数据项属性的对象初始化新的聚合器类实例。
+            </summary>
+            <param name="accessor">An object that allows reading data item properties.</param>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Aggregation.Aggregator`1.Step(`0,System.String)">
+            <summary>
+            A callback invoked once for each data item.
+            为每个数据项调用一次的回调。
+            </summary>
+            <param name="container">
+            A data item.
+            数据项。
+            </param>
+            <param name="selector">
+            The name or path to the property whose value should be aggregated.
+            应聚合其值的属性的名称或路径。
+            </param>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Aggregation.Aggregator`1.Finish">
+            <summary>
+            A callback invoked at the aggregation's final stage.
+            在聚合的最后阶段调用的回调。
+            </summary>
+            <returns>
+            The result of the aggregation.
+            聚合的结果。
+            </returns>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.Aggregation.CustomAggregators">
+            <summary>
+            Provides methods that manipulate custom aggregators.
+            提供操作自定义聚合器的方法。
+            </summary>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Aggregation.CustomAggregators.RegisterAggregator(System.String,System.Type)">
+            <summary>
+            Registers a custom aggregator.
+            注册自定义聚合器。
+            </summary>
+            <param name="summaryType">
+            The aggregator's string identifier.
+            聚合器的字符串标识符。
+            </param>
+            <param name="aggregatorType">
+            The aggregator's type declaration without the generic type parameter T.
+            不带泛型类型参数T的聚合器的类型声明。
+            </param>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.DataSourceLoader">
+            <summary>
+            Provides static methods for loading data from collections that implement the
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/> or <see cref="T:System.Linq.IQueryable`1"/> interface.
+            提供从实现System.Collections.Generic.IEnumerable{T}或System.Linq.IQueryable{T}的集合加载数据的静态方法
+            </summary>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.DataSourceLoader.Load``1(System.Collections.Generic.IEnumerable{``0},DevExtreme.AspNet.Data.DataSourceLoadOptionsBase)">
+            <summary>
+            Loads data from a collection that implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            从实现System.Collections.Generic.IEnumerable{T}接口的集合加载数据。
+            </summary>
+            <typeparam name="T">
+            The type of objects in the collection.
+            集合中对象的类型。
+            </typeparam>
+            <param name="source">
+            A collection that implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            实现System.Collections.Generic.IEnumerable{T}接口的集合。
+            </param>
+            <param name="options">
+            Data processing settings when loading data.
+            加载数据时的数据处理设置。
+            </param>
+            <returns>The load result.</returns>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.DataSourceLoader.Load``1(System.Linq.IQueryable{``0},DevExtreme.AspNet.Data.DataSourceLoadOptionsBase)">
+            <summary>
+            Loads data from a collection that implements the <see cref="T:System.Linq.IQueryable`1"/> interface.
+            从实现T接口的集合加载数据。
+            </summary>
+            <typeparam name="T">
+            The type of objects in the collection.
+            集合中对象的类型。
+            </typeparam>
+            <param name="source">
+            A collection that implements the <see cref="T:System.Linq.IQueryable`1"/> interface.
+            实现System.Linq.IQueryable接口的集合。
+            </param>
+            <param name="options">
+            Data processing settings when loading data.
+            加载数据时的数据处理设置。
+            </param>
+            <returns>
+            The load result.
+            加载结果。
+            </returns>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.DataSourceLoader.LoadAsync``1(System.Linq.IQueryable{``0},DevExtreme.AspNet.Data.DataSourceLoadOptionsBase,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously loads data from a collection that implements the <see cref="T:System.Linq.IQueryable`1"/> interface.
+            从实现System.Linq.IQueryable接口的集合异步加载数据。
+            </summary>
+            <typeparam name="T">
+            The type of objects in the collection.
+            集合中对象的类型。
+            </typeparam>
+            <param name="source">
+            A collection that implements the <see cref="T:System.Linq.IQueryable`1"/> interface.
+            实现System.Linq.IQueryable{T}接口的集合。
+            </param>
+            <param name="options">
+            Data processing settings when loading data.
+            加载数据时的数据处理设置。
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> object that delivers a cancellation notice to the running operation.
+            向正在运行的操作发送取消通知的System.Threading.CancellationToken对象。 
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> object that represents the asynchronous operation.
+            The task result contains the load result.
+            表示异步操作的System.Threading.Tasks.Task{TResult}对象。任务结果包含加载结果。
+            </returns>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase">
+            <summary>
+            A class with properties that specify data processing settings.
+            具有指定数据处理设置的属性的类。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.StringToLowerDefault">
+            <summary>
+            A global default value for the <see cref="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.StringToLower" /> property
+            StringToLower属性的全局默认值
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.RequireTotalCount">
+            <summary>
+            A flag indicating whether the total number of data objects is required.
+            指示是否需要数据对象总数的标志。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.RequireGroupCount">
+            <summary>
+            A flag indicating whether the number of top-level groups is required.
+            指示是否需要顶级组数的标志。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.IsCountQuery">
+            <summary>
+            A flag indicating whether the current query is made to get the total number of data objects.
+            指示是否进行当前查询以获取数据对象总数的标志。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Skip">
+            <summary>
+            The number of data objects to be skipped from the start of the resulting set.
+            从结果集开始要跳过的数据对象数。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Take">
+            <summary>
+            The number of data objects to be loaded.
+            要加载的数据对象数。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Sort">
+            <summary>
+            A sort expression.
+            排序表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Group">
+            <summary>
+            A group expression.
+            分组表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Filter">
+            <summary>
+            A filter expression.
+            筛选表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.TotalSummary">
+            <summary>
+            A total summary expression.
+            汇总表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.GroupSummary">
+            <summary>
+            A group summary expression.
+            分组汇总表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Select">
+            <summary>
+            A select expression.
+            选择表达式。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.PreSelect">
+            <summary>
+            An array of data fields that limits the <see cref="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Select" /> expression.
+            The applied select expression is the intersection of <see cref="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.PreSelect" /> and <see cref="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.Select" />.
+            限制Select表达式的数据字段数组。
+            应用的select表达式是PreSelect和Select的交集
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.RemoteSelect">
+            <summary>
+            A flag that indicates whether the LINQ provider should execute the select expression.
+            If set to false, the select operation is performed in memory.
+            指示LINQ提供程序是否应执行选择表达式的标志。
+            如果设置为false，则在内存中执行选择操作。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.RemoteGrouping">
+            <summary>
+            A flag that indicates whether the LINQ provider should execute grouping.
+            If set to false, the entire dataset is loaded and grouped in memory.
+            指示LINQ提供程序是否应执行分组的标志。
+            如果设置为false，则会加载整个数据集并将其分组到内存中。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.PrimaryKey">
+            <summary>
+            An array of primary keys.
+            主键数组。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.DefaultSort">
+            <summary>
+            The data field to be used for sorting by default.
+            默认情况下用于排序的数据字段。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.StringToLower">
+            <summary>
+            A flag that indicates whether filter expressions should include a ToLower() call that makes string comparison case-insensitive.
+            Defaults to true for LINQ to Objects, false for any other provider.
+            指示筛选器表达式是否应包含ToLower（）调用的标志，该调用使字符串比较不区分大小写。
+            对于LINQ to Objects，默认为true，对于任何其他提供程序，默认为false。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.DataSourceLoadOptionsBase.PaginateViaPrimaryKey">
+            <summary>
+            If this flag is enabled, keys and data are loaded via separate queries.
+            This may result in a more efficient SQL execution plan.
+            如果启用此标志，则通过单独的查询加载键和数据。
+            这可能会导致更有效的SQL执行计划。
+            </summary>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.GroupingInfo">
+            <summary>
+            Represents a grouping level to be applied to data.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.GroupingInfo.GroupInterval">
+            <summary>
+            A value that groups data in ranges of a given length or date/time period.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.GroupingInfo.IsExpanded">
+            <summary>
+            A flag indicating whether the group's data objects should be returned.
+            </summary>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.GroupingInfo.GetIsExpanded">
+            <summary>
+            Returns the value of the IsExpanded field or <c>true</c> if this value is <c>null</c>.
+            </summary>
+            <returns>The value of the IsExpanded field or <c>true</c> if this value is <c>null</c>.</returns>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.Helpers.DataSourceLoadOptionsParser">
+            <summary>
+            A parser for the data processing settings.
+            </summary>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Helpers.DataSourceLoadOptionsParser.Parse(DevExtreme.AspNet.Data.DataSourceLoadOptionsBase,System.Func{System.String,System.String})">
+            <summary>
+            Converts the string representations of the data processing settings to equivalent values of appropriate types.
+            </summary>
+            <param name="loadOptions">An object that will contain converted values.</param>
+            <param name="valueSource">A function that accepts names of the data source options (such as "filter", "sort", etc.) and returns corresponding values.</param>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.Helpers.IAccessor`1">
+            <summary>
+            Allows reading object properties.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+        </member>
+        <member name="M:DevExtreme.AspNet.Data.Helpers.IAccessor`1.Read(`0,System.String)">
+            <summary>
+            Reads an object property.
+            </summary>
+            <param name="container">An object whose property should be read.</param>
+            <param name="selector">The name or path to the property.</param>
+            <returns>The property's value.</returns>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.ResponseModel.Group">
+            <summary>
+            Represents a group in the resulting dataset.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.Group.key">
+            <summary>
+            The group's key.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.Group.items">
+            <summary>
+            Subgroups or data objects.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.Group.count">
+            <summary>
+            The count of items in the group.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.Group.summary">
+            <summary>
+            Group summary calculation results.
+            </summary>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.ResponseModel.LoadResult">
+            <summary>
+            Represents a load result.
+            表示加载结果。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.LoadResult.data">
+            <summary>
+            A resulting dataset.
+            结果数据集。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.LoadResult.totalCount">
+            <summary>
+            The total number of data objects in the resulting dataset.
+            结果数据集中的数据对象总数。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.LoadResult.groupCount">
+            <summary>
+            The number of top-level groups in the resulting dataset.
+            结果数据集中顶级组的数目。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.ResponseModel.LoadResult.summary">
+            <summary>
+            Total summary calculation results.
+            汇总计算结果。
+            </summary>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.SortingInfo">
+            <summary>
+            Represents a sorting parameter.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.SortingInfo.Selector">
+            <summary>
+            The data field to be used for sorting.
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.SortingInfo.Desc">
+            <summary>
+            A flag indicating whether data should be sorted in a descending order.
+            </summary>
+        </member>
+        <member name="T:DevExtreme.AspNet.Data.SummaryInfo">
+            <summary>
+            Represents a group or total summary definition.
+            表示组或汇总定义。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.SummaryInfo.Selector">
+            <summary>
+            The data field to be used for calculating the summary.
+            用于计算摘要的数据字段。
+            </summary>
+        </member>
+        <member name="P:DevExtreme.AspNet.Data.SummaryInfo.SummaryType">
+            <summary>
+            An aggregate function: "sum", "min", "max", "avg", or "count".
+            聚合函数：“sum”、“min”、“max”、“avg”或“count”。
+            </summary>
+        </member>
+    </members>
+</doc>

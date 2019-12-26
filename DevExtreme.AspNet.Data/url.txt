@@ -1,0 +1,7 @@
+源码：
+https://github.com/DevExpress/DevExtreme.AspNet.Data
+DevExtreme data layer extension for ASP.NET 
+
+说明：
+（1）本源码基于DevExtreme.AspNet.Data-2.5.1版编译。
+（2）本源码只保留了编译netstandard2.0版本，支持.net framework框架的版本去除。

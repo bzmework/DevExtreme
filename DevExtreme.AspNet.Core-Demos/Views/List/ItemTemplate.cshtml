@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ListProduct>
+
+<div class="list-container">
+    @(Html.DevExtreme().List()
+        .Height("100%")
+        .DataSource(Model)
+        .ItemTemplate(@<text>
+            <div class="product">
+                <img src="<%- ImageSrc %>">
+                <div><%- Name %></div>
+                <div class="price"><%- Globalize.formatCurrency(Price, "USD", { maximumFractionDigits: 0 }) %></div>
+            </div>
+        </text>)
+    )
+</div>

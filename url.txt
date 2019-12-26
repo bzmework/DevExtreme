@@ -1,15 +1,20 @@
-DevExtremeÊÇÓÅĞãµÄ¿ªÔ´µÄÓÃÓÚÏìÓ¦Ê½Web¿ª·¢µÄHTML5 JavaScript×é¼şÌ×¼ş¡£
-ÎªÁËÍÆ¹ãDevExtremeÔÚAsp.Net.CoreÖĞµÄÓ¦ÓÃ£¬±¾Ô´ÂëÔÚDevExpress19.2.4²úÆ··¢²¼µÄ»ù´¡ÉÏ£¬
-×¨ÃÅ¶ÔDevExtreme½øĞĞÁËAsp.Net.Core°şÀë£¬²¢¶Ô²¿·Ö¿Ø¼ş½øĞĞÁËºº»¯£¬ÒÔ¹©Ñ§Ï°Ê¹ÓÃ£¬ÆÚ´ıÄú³ÖĞøµÄºº»¯ºÍ×¢ÊÍ£¬
-ÔÙ´ÎÉùÃ÷£¬²»µÃÓÃÓÚÉÌÒµÓÃÍ¾£¬Çë´Ó¹ÙÍø¹ºÂòÕı°æÊÚÈ¨£ºhttps://js.devexpress.com/
+DevExtremeæ˜¯ä¼˜ç§€çš„å¼€æºçš„ç”¨äºå“åº”å¼Webå¼€å‘çš„HTML5 JavaScriptç»„ä»¶å¥—ä»¶ã€‚
+ä¸ºäº†æ¨å¹¿DevExtremeåœ¨Asp.Net.Coreä¸­çš„åº”ç”¨ï¼Œæœ¬æºç åœ¨DevExpress19.2.4äº§å“å‘å¸ƒçš„åŸºç¡€ä¸Šï¼Œ
+ä¸“é—¨å¯¹DevExtremeè¿›è¡Œäº†Asp.Net.Coreå‰¥ç¦»ï¼Œå¹¶å¯¹éƒ¨åˆ†æ§ä»¶è¿›è¡Œäº†æ±‰åŒ–ï¼Œä»¥ä¾›å­¦ä¹ ä½¿ç”¨ï¼ŒæœŸå¾…æ‚¨æŒç»­çš„æ±‰åŒ–å’Œæ³¨é‡Šï¼Œ
+å†æ¬¡å£°æ˜ï¼Œä¸å¾—ç”¨äºå•†ä¸šç”¨é€”ï¼Œè¯·ä»å®˜ç½‘è´­ä¹°æ­£ç‰ˆæˆæƒï¼šhttps://js.devexpress.com/
 
-¹Ù·½Ô´Âë£º
+ç¼–è¯‘ç¯å¢ƒï¼š
+Microsoft Visual Studio 2019
+netstandard2.0
+
+
+å®˜æ–¹æºç ï¼š
 https://github.com/DevExpress/DevExtreme
 
-ÔÚÏßDemo:
+åœ¨çº¿Demo:
 https://js.devexpress.com/Demos/WidgetsGallery/
 https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/Overview/NetCore/Light/
 
-ÔÚÏßÎÄµµ£º
+åœ¨çº¿æ–‡æ¡£ï¼š
 https://js.devexpress.com/Documentation/
 https://docs.devexpress.com/AspNetCore/400263/aspnet-core-controls

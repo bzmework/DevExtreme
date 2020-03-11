@@ -20,3 +20,4 @@ https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/Overview/NetCore/Li
 https://js.devexpress.com/Documentation/  
 https://docs.devexpress.com/AspNetCore/400263/aspnet-core-controls  
 
+QQ讨论群：```948127686```   
